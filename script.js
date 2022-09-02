@@ -129,7 +129,7 @@ const rDiagonal0 = () => {
 	for (let i=0;i<7;i++) {
 	    array.push(matrizTablero[i][i]);
 	}
-	//tresIguales(array)
+	tresIguales(array)
 	array = [];
 	pintar = [];
 }
@@ -137,12 +137,12 @@ const rDiagonal0 = () => {
 const rDiagonal1 = () => {
 	let array = [];
 	let pintar = [];
-	let j = 2;
+	let j = 6;
 	for (let i=0;i<7;i++) {
 	    array.push(matrizTablero[i][j]);
 	    j--;		
 	}
-	// tresIguales(array)
+	tresIguales(array)
 	array = [];
 	pintar = [];
 }
