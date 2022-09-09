@@ -17,13 +17,12 @@ body {
 }
 body .tablero {
   display: grid;
-  grid-template-columns: repeat(7, 50px);
-  grid-template-rows: repeat(7, 50px);
+  grid-template-columns: repeat(7, 60px);
+  grid-template-rows: repeat(7, 60px);
   gap: 5px;
 }
 body .tablero .casilla {
   background: #212121;
-  border: 1px solid #fff;
   cursor: pointer;
   transition: 1s;
   border-radius: 50%;
@@ -31,6 +30,16 @@ body .tablero .casilla {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  color: transparent;
+}
+body .tablero .casilla-X {
+  background: #9561d1;
+}
+body .tablero .casilla-O {
+  background: #81fca6;
+}
+body .tablero .casilla-ganador {
+  background: #fff;
 }
 
 /*# sourceMappingURL=styles.css.map */
