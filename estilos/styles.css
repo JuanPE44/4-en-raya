@@ -8,20 +8,60 @@
 html {
   font-size: 62.5%;
 }
-
-body {
+html body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-body .tablero {
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+.menu h1 {
+  font-size: 6rem;
+  text-shadow: -4px 4px 1px #4e4bca;
+}
+.menu .btn-play {
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  border: 1px solid #4e4bca;
+  color: #4e4bca;
+  background: #fff;
+  cursor: pointer;
+  margin-top: 4rem;
+  border-radius: 3px;
+}
+
+.contenedor-tablero {
+  display: none;
+  flex-direction: column;
+  animation: tableroA linear 2s alternate;
+}
+.contenedor-tablero .header-tablero {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.contenedor-tablero .header-tablero h3 {
+  font-size: 2rem;
+  margin: 2rem;
+}
+.contenedor-tablero .header-tablero .jugador-1 {
+  border-bottom: 3px solid #ca4b80;
+}
+.contenedor-tablero .header-tablero .jugador-2 {
+  border-bottom: 3px solid #4bcabf;
+}
+.contenedor-tablero .tablero {
   display: grid;
   grid-template-columns: repeat(7, 60px);
   grid-template-rows: repeat(7, 60px);
   gap: 5px;
+  transition: 1s;
 }
-body .tablero .casilla {
+.contenedor-tablero .tablero .casilla {
   background: #212121;
   cursor: pointer;
   transition: 1s;
@@ -31,15 +71,73 @@ body .tablero .casilla {
   align-items: center;
   font-size: 2rem;
   color: transparent;
+  transition: 1s;
 }
-body .tablero .casilla-X {
-  background: #9561d1;
+.contenedor-tablero .tablero .casilla-X {
+  background: #ca4b80;
 }
-body .tablero .casilla-O {
-  background: #81fca6;
+.contenedor-tablero .tablero .casilla-O {
+  background: #4bcabf;
 }
-body .tablero .casilla-ganador {
+.contenedor-tablero .tablero .casilla-ganador {
+  background: #4e4bca;
+  transition: 1s;
+}
+
+.ganador {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background: #fff;
+  animation: ganador linear 3s alternate;
+}
+.ganador .titulo-ganador {
+  font-size: 5rem;
+  background: #4e4bca;
+  color: #fff;
+  border: 2px solid #4e4bca;
+  padding: 1rem 3rem;
+  margin-bottom: 5rem;
+  border-radius: 3px;
+  animation: tituloGanador linear 0.5s alternate;
+}
+.ganador .btn-revancha {
+  padding: 1rem 2rem;
+  background: transparent;
+  color: #4e4bca;
+  border: 1px solid #4e4bca;
+  cursor: pointer;
+}
+
+@keyframes tableroA {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes ganador {
+  0% {
+    background: transparent;
+  }
+  100% {
+    background: #fff;
+  }
+}
+@keyframes tituloGanador {
+  0% {
+    opacity: 0.5;
+    transform: rotate(0deg) scale(0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
