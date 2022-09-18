@@ -1,17 +1,18 @@
 
 class Jugador {
-    constructor(xo,color,msgWin){
+    constructor(xo,color,txt){
         this.xo = xo;
         this.color = color;
         this.puntaje = 1;
         this.puntajeTotal = 0;
         this.ganarArray = [];
-        this.txt = msgWin;
+        this.elementoTxt = document.querySelector('.txt-'+xo);
+        this.txt = txt
     }
 }
 
-const j1 = new Jugador('j1','#f00','Gano el jugador 1');
-const j2 = new Jugador('j2','#0j0','Gano el jugador 2');
+const j1 = new Jugador('j1','#f00','JUGADOR 1: ');
+const j2 = new Jugador('j2','#0j0','JUGADOR 2: ');
 
 
 class Tablero {
@@ -55,15 +56,14 @@ class Tablero {
                 setTimeout(() => {
                     this.tablero[j][id2[1]].classList.remove(this.jugador.xo);
                     
-                }, 500 + j * 50)
+                }, 200 + j * 50)
                 this.tablero[j][id2[1]].classList.add(this.jugador.xo);
-            }, 300 + j * 50)
+            }, j * 50)
         }  
     }
 
     jugadorActual() {
         this.jugador === j2 ? this.jugador = j1 : this.jugador = j2;
-        console.log(this.jugador.xo);
     }
 
     recorrerTablero() {
@@ -111,22 +111,29 @@ class Tablero {
             let XO = e.innerHTML;
             
             if(XO === XOant && XOant !== '') {
-                if(this.jugador.puntaje===1) {this.jugador.ganarArray.push(eAnt);}
-                this.jugador.puntaje++;                
+                if(this.jugador.puntaje===1) {this.jugador.ganarArray.push(eAnt);}     
+                this.jugador.puntaje++;         
                 this.jugador.ganarArray.push(e);
                  
-                if(this.jugador.puntaje === 4) {
-                    console.log('gano!!! '+this.jugador.xo);
+                if(this.jugador.puntaje === 4) {                    
+                    this.jugador.puntajeTotal++;
+                    this.jugador.elementoTxt.innerHTML = this.jugador.txt + this.jugador.puntajeTotal;
                     this.pintarWin(this.jugador.ganarArray);
+                    this.contColumnas = [6,6,6,6,6,6,6];
                     this.win = true;
                 }
                 
-            } 
+            }
+            if(XO!==XOant) {
+                this.jugador.puntaje = 1;
+                this.jugador.ganarArray = []; 
+            }             
             eAnt = e;
-            XOant = XO;
+            XOant = XO;             
         });
-        this.jugador.puntaje = 1;
-        this.jugador.ganarArray = [];     
+        
+        this.jugador.ganarArray = []; 
+           
     }
 
     pintarWin(ganarArray) {
@@ -179,12 +186,11 @@ class Casilla {
         return casilla;
     }
 
-    clickCasilla() {
-        console.log(t.pintando);
+    clickCasilla() {        
         if(t.win === false && t.pintando === false) {
             t.jugadorActual()
             this.pintarCasilla();
-            t.recorrerTablero();
+            
         }
        
     }
@@ -204,10 +210,11 @@ class Casilla {
             
             setTimeout(()=>{
                 casilla.classList.add(t.jugador.xo);            
-                casilla.innerHTML = t.jugador.xo;                
-            },300 + i * 50)
+                casilla.innerHTML = t.jugador.xo;  
+                t.recorrerTablero();              
+            },100 + i * 50)
 
-            setTimeout(()=>{t.pintando = false;},1300 - i * 50);
+            setTimeout(()=>{t.pintando = false;},1000 - i * 50);
             
         }
 

@@ -7,6 +7,10 @@ $jugador-2: #4cd3eb;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select:none;
 }
 
 html {
@@ -27,17 +31,27 @@ html {
         justify-content: center;
         
         h3 {
-            margin: 1rem;
-            font-size: 2rem;
+            margin: 2rem;
+            font-size: 1.7rem;
+            &:nth-child(1) {
+                border-bottom: 3px solid $jugador-1;
+            }
+    
+            &:nth-child(2) {
+                border-bottom: 3px solid $jugador-2;
+            }
         }
+
+        
+
 
 
     } 
 
     .tablero {
         display: grid;
-        grid-template-rows: repeat(7,70px);
-        grid-template-columns: repeat(7,70px);
+        grid-template-rows: repeat(7,60px);
+        grid-template-columns: repeat(7,60px);
         gap: 5px;
     
         .casilla {
