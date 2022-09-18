@@ -22,6 +22,7 @@ class Tablero {
         this.jugador = j2;
         this.win = false;
         this.contColumnas = [6,6,6,6,6,6,6];
+        this.pintando = false;
     }
 
     crearTablero() {
@@ -47,6 +48,19 @@ class Tablero {
         this.tablero = tablero;
     }
 
+    pintarColumna(id2,i) {
+        
+        for (let j=0;j<i;j++) {
+            setTimeout(() => {
+                setTimeout(() => {
+                    this.tablero[j][id2[1]].classList.remove(this.jugador.xo);
+                    
+                }, 500 + j * 50)
+                this.tablero[j][id2[1]].classList.add(this.jugador.xo);
+            }, 300 + j * 50)
+        }  
+    }
+
     jugadorActual() {
         this.jugador === j2 ? this.jugador = j1 : this.jugador = j2;
         console.log(this.jugador.xo);
@@ -67,7 +81,7 @@ class Tablero {
 
             }
 
-            // this.cuatroIguales(fila);
+            this.cuatroIguales(fila);
             this.cuatroIguales(columna);
             fila = [];
             columna = [];
@@ -79,8 +93,8 @@ class Tablero {
                 diagonal1.push(this.tablero[y][this.tablero.length - 1 - x]);
     
             }
-            // this.cuatroIguales(diagonal0);
-            // this.cuatroIguales(diagonal1);
+            this.cuatroIguales(diagonal0);
+            this.cuatroIguales(diagonal1);
     
             diagonal0 = [];
             diagonal1 = [];
@@ -138,30 +152,9 @@ class Tablero {
                 }, 2000 + x * 100)
     
             }
-    
-    
         }
     }
-
-   
 }
-
-/* let XOanterior='';
-        let cont= 1;
-
-        casillas.forEach(e=> {
-            let XO = e.innerHTML;
-            
-            if(XO===XOanterior && XOanterior!=='') {
-                console.log('entro')
-                cont++;
-                if(cont===4) {
-                    this.win = true;
-                    console.log('gano!!!')                 
-                }                
-            }
-            XOanterior=XO;
-        }) */
 
 const t = new Tablero(7,7);
 
@@ -187,22 +180,35 @@ class Casilla {
     }
 
     clickCasilla() {
-        t.jugadorActual()
-        this.pintarCasilla();
-        t.recorrerTablero();
+        console.log(t.pintando);
+        if(t.win === false && t.pintando === false) {
+            t.jugadorActual()
+            this.pintarCasilla();
+            t.recorrerTablero();
+        }
+       
     }
 
     pintarCasilla() {
-        t.jugador.xo;
+
         let id2 = this.elemento.id
-
         let i = parseInt(t.contColumnas[id2[1]]);
-        if (t.win === false && i >= 0) {
+        t.pintando = true;
+        
+        if (i >= 0) {
+            
+            t.pintarColumna(id2,i);
             parseInt(t.contColumnas[id2[1]]--); 
+            
             let casilla = document.getElementById(i.toString()+id2[1].toString());
+            
+            setTimeout(()=>{
+                casilla.classList.add(t.jugador.xo);            
+                casilla.innerHTML = t.jugador.xo;                
+            },300 + i * 50)
 
-            casilla.classList.add(t.jugador.xo);            
-            casilla.innerHTML = t.jugador.xo;
+            setTimeout(()=>{t.pintando = false;},1300 - i * 50);
+            
         }
 
     }

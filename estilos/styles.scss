@@ -1,11 +1,12 @@
 
 $jugador-1: #eb4c4c;
-$jugador-2: #4cebae;
+$jugador-2: #4cd3eb;
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 html {
@@ -25,6 +26,12 @@ html {
         display: flex;
         justify-content: center;
         
+        h3 {
+            margin: 1rem;
+            font-size: 2rem;
+        }
+
+
     } 
 
     .tablero {
@@ -41,7 +48,11 @@ html {
             -ms-border-radius: 50%;
             -o-border-radius: 50%;
             cursor: pointer;
-            transition: .5s;
+            transition: .3s;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -ms-transition: .3s;
+            -o-transition: .3s;
         }
         
         .j1 {
@@ -53,8 +64,12 @@ html {
         }
 
         .casilla-win {
-            background: #00f;
-            transition: .5s;
+            background: #7af184;
+            transition: .3s;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -ms-transition: .3s;
+            -o-transition: .3s;
         }
 
 

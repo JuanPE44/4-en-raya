@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 html {
@@ -18,6 +19,10 @@ html body {
   display: flex;
   justify-content: center;
 }
+.contenedor-tablero .header-tablero h3 {
+  margin: 1rem;
+  font-size: 2rem;
+}
 .contenedor-tablero .tablero {
   display: grid;
   grid-template-rows: repeat(7, 70px);
@@ -32,17 +37,25 @@ html body {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
 }
 .contenedor-tablero .tablero .j1 {
   background: #eb4c4c;
 }
 .contenedor-tablero .tablero .j2 {
-  background: #4cebae;
+  background: #4cd3eb;
 }
 .contenedor-tablero .tablero .casilla-win {
-  background: #00f;
-  transition: 0.5s;
+  background: #7af184;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
 }
 
 /*# sourceMappingURL=styles.css.map */
