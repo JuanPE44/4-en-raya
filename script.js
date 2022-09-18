@@ -104,6 +104,7 @@ class Tablero {
                 if(this.jugador.puntaje === 4) {
                     console.log('gano!!! '+this.jugador.xo);
                     this.pintarWin(this.jugador.ganarArray);
+                    this.win = true;
                 }
                 
             } 
@@ -115,10 +116,31 @@ class Tablero {
     }
 
     pintarWin(ganarArray) {
-        console.log(ganarArray)
         ganarArray.forEach(e=>{
-            e.style.background = '#00f'
+            e.classList.add('casilla-win');
         })
+        this.animacionWin();
+    }
+
+    animacionWin() {
+        for (let i = 1 - this.tablero.length; i < this.tablero.length; i++) {
+            for (let x = -Math.min(0, i), y = Math.max(0, i); x < this.tablero.length && y < this.tablero.length; x++, y++) {
+                setTimeout(() => {
+                    this.tablero[y][x].classList.remove('casilla');
+                    this.tablero[y][x].classList.remove('j1');
+                    this.tablero[y][x].classList.remove('j2');
+                    this.tablero[y][x].innerHTML = '';
+                    this.win = false;
+                }, 1000 + y * 100)
+                setTimeout(() => {
+                    this.tablero[y][x].classList.add('casilla');
+                    this.tablero[y][x].classList.remove('casilla-win');
+                }, 2000 + x * 100)
+    
+            }
+    
+    
+        }
     }
 
    

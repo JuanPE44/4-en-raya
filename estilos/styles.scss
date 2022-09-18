@@ -35,9 +35,15 @@ html {
     
         .casilla {
             background: #222;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
             cursor: pointer;
+            transition: .5s;
         }
-
+        
         .j1 {
             background: $jugador-1;
         }
@@ -45,5 +51,12 @@ html {
         .j2 {
             background: $jugador-2;
         }
+
+        .casilla-win {
+            background: #00f;
+            transition: .5s;
+        }
+
+
     }
 }

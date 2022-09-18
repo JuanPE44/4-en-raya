@@ -26,13 +26,23 @@ html body {
 }
 .contenedor-tablero .tablero .casilla {
   background: #222;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   cursor: pointer;
+  transition: 0.5s;
 }
 .contenedor-tablero .tablero .j1 {
   background: #eb4c4c;
 }
 .contenedor-tablero .tablero .j2 {
   background: #4cebae;
+}
+.contenedor-tablero .tablero .casilla-win {
+  background: #00f;
+  transition: 0.5s;
 }
 
 /*# sourceMappingURL=styles.css.map */
