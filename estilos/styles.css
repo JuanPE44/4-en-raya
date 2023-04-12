@@ -52,6 +52,7 @@ html body {
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
+  color: transparent;
 }
 .contenedor-tablero .tablero .j1 {
   background: #eb4c4c;
