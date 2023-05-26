@@ -15,4 +15,5 @@ Este es un proyecto de juego 4-en-raya implementado utilizando HTML, Sass y Java
 
 ## Instalación
 
-1. Clona este repositorio en tu máquina local:
+1. Clona este repositorio en tu máquina local
+2. Abri el archivo `index.html`
